@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/enemy_behavior.gd" type="Script" id=1]
+[ext_resource path="res://Resources/enemy1_sprite_frames.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Sprites/enemy_health_bar_frame.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/enemy_health_bar.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/shadow.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/enemy_throw.wav" type="AudioStream" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[node name="enemy1" type="KinematicBody2D"]
+script = ExtResource( 1 )
+health = 3
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="sprites" type="AnimatedSprite" parent="."]
+frames = ExtResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="action_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="snowball_create_point_1" type="Position2D" parent="."]
+position = Vector2( -16, -16 )
+
+[node name="snowball_create_point_2" type="Position2D" parent="."]
+position = Vector2( 16, -16 )
+
+[node name="death_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="health_bar" type="TextureProgress" parent="."]
+margin_left = -16.4816
+margin_top = -24.9452
+margin_right = 15.5184
+margin_bottom = -16.9452
+value = 75.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="Sprite" parent="."]
+position = Vector2( 0, 14 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="throw_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="animation_finished" from="sprites" to="." method="throw_finished"]
+[connection signal="timeout" from="action_timer" to="." method="delay_timeout"]
+[connection signal="timeout" from="death_timer" to="." method="death_timeout"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/level_manager.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/player_start.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/enemy1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/level_background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/snowball_ammo.tscn" type="PackedScene" id=6]
+
+[node name="level_1" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 1 )
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 240, 590 )
+scale = Vector2( 3, 3 )
+
+[node name="enemy1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 269.255, 435.612 )
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[node name="bg" parent="." instance=ExtResource( 5 )]
+position = Vector2( -386.096, 327.707 )
+
+[node name="ammo" parent="." instance=ExtResource( 6 )]
+position = Vector2( 83.2133, 792.639 )

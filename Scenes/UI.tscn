@@ -1,0 +1,373 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Sprites/player_health_bar_frame.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/player_face_100hp.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/player_health_bar.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/UI.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/snowballs_UI.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Fonts/game_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Sprites/black_screen.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ui_win_pic.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ui_lose_pic.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ui_right.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ui_restart.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ui_menu.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/lose_screen.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/win_screen.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ui_pause.png" type="Texture" id=15]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="snowball_count" type="Label" parent="game_UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -242.598
+margin_top = 3.37842
+margin_right = -174.598
+margin_bottom = 63.3784
+custom_fonts/font = ExtResource( 6 )
+text = "99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_face" type="TextureRect" parent="game_UI"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_health" type="TextureProgress" parent="game_UI"]
+margin_left = 64.0
+margin_top = 16.0
+margin_right = 100.0
+margin_bottom = 24.0
+rect_scale = Vector2( 5, 5 )
+value = 4.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="snowballs" type="TextureRect" parent="game_UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -173.653
+margin_top = 3.3223
+margin_right = -109.653
+margin_bottom = 67.3223
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="TextureButton" parent="game_UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -29.0905
+margin_top = 10.7028
+margin_right = -13.0905
+margin_bottom = 26.7029
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 16, 0 )
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="win_UI" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="win_screen" type="TextureRect" parent="win_UI"]
+modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="win_text" type="TextureRect" parent="win_UI"]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -48.0
+margin_top = -24.0
+margin_right = 48.0
+margin_bottom = 24.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 48, 24 )
+texture = ExtResource( 8 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="Control" parent="win_UI"]
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.52008
+margin_bottom = -230.0
+
+[node name="menu" type="TextureButton" parent="win_UI/buttons"]
+anchor_left = 0.25
+anchor_right = 0.25
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="TextureButton" parent="win_UI/buttons"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+action_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="TextureButton" parent="win_UI/buttons"]
+anchor_left = 0.75
+anchor_right = 0.75
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose_UI" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose_screen" type="TextureRect" parent="lose_UI"]
+modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose_text" type="TextureRect" parent="lose_UI"]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -48.0
+margin_top = -24.0
+margin_right = 48.0
+margin_bottom = 24.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 48, 24 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="Control" parent="lose_UI"]
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.52008
+margin_bottom = -230.0
+
+[node name="menu" type="TextureButton" parent="lose_UI/buttons"]
+anchor_left = 0.3
+anchor_right = 0.3
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="TextureButton" parent="lose_UI/buttons"]
+anchor_left = 0.7
+anchor_right = 0.7
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause_UI" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="black_screen" type="TextureRect" parent="pause_UI"]
+modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="Control" parent="pause_UI"]
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.52008
+margin_bottom = -230.0
+
+[node name="menu" type="TextureButton" parent="pause_UI/buttons"]
+anchor_left = 0.25
+anchor_right = 0.25
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="TextureButton" parent="pause_UI/buttons"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+margin_top = -8.819
+margin_right = 8.0
+margin_bottom = 7.181
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="TextureButton" parent="pause_UI/buttons"]
+anchor_left = 0.75
+anchor_right = 0.75
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 7, 7 )
+rect_pivot_offset = Vector2( 8, 8 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause_text" type="Label" parent="pause_UI"]
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.4
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
+text = "PAUSE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="end_game_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="pressed" from="game_UI/pause" to="." method="pause"]
+[connection signal="pressed" from="win_UI/buttons/menu" to="." method="load_menu"]
+[connection signal="pressed" from="win_UI/buttons/restart" to="." method="restart"]
+[connection signal="pressed" from="win_UI/buttons/next" to="." method="load_next_scene"]
+[connection signal="pressed" from="lose_UI/buttons/menu" to="." method="load_menu"]
+[connection signal="pressed" from="lose_UI/buttons/restart" to="." method="restart"]
+[connection signal="pressed" from="pause_UI/buttons/next" to="." method="continue_game"]
+[connection signal="timeout" from="end_game_timer" to="." method="game_over"]
